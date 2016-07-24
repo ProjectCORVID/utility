@@ -26,16 +26,19 @@ Calls to WithRoles instances look like
 
 # Context
 
-For now contexts will just be strings. Later they might be symbols or
-something fancier.
+See lib/context
 
 # Role
 
 The Role class adds or amends the behavior of a WithRoles. A role has a
-Context it operates within. When a WithRoles has two roles in the same Context
-with the same method name, the most recently added Role receives that method
-call first and then may pass the message on to less recently added roles by
-calling @nextRole[methodName].
+Context it operates within and shares with other roles in the same context.
+When a WithRoles has two roles in the same Context with the same method name,
+the most recently added Role receives that method call first and then may pass
+the message on to less recently added roles by calling @nextRole[methodName].
+
+ - @nextRole is like super() for roles
+ - @context is like this() for roles
+ - @these is the WithRoles instance these roles have been attached to
 
     class Role extends SymbolicMethods
       constructor: (@context, @name) ->
