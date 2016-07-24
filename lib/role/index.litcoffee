@@ -42,7 +42,7 @@ the message on to less recently added roles by calling @nextRole[methodName].
 
     class Role extends SymbolicMethods
       constructor: (@context, @name) ->
-        super "Role"
+        super @name
 
     SymbolicMethods.transform Role, '', Role,
       createInstance: (these, nextRole) ->
